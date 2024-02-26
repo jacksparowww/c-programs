@@ -1,0 +1,377 @@
+1) find largest of 3 number
+#include<iostream>
+using namespace std;
+
+int main(){
+    int n1=10,n2=20,n3=30;
+    if(n1>n2 && n1>n3){
+        cout<<"n1 is graeter";
+    }
+    else if(n2>n1 && n2>n3){
+        cout<<"n2 is greater"<<endl;
+    }
+    else{
+        cout<<"n3 is greater";
+    }
+}
+-------------------------------------------------------------------------------------------
+2) assending order and descending order
+#include<iostream>
+using namespace std;                            
+
+int main() {
+    int i = 0, j = 0; 
+    int a[5] = {4, 1, 2, 3};
+    for (i = 0; i < 5; i++) {
+        for (j = i + 1; j < 4; j++) { 
+            if (a[i] > a[j]) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+    for (i = 0; i < 4; i++) { 
+        cout << a[i] << " ";
+    }
+    return 0;
+}
+----------------------------------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    int i = 0, j = 0; 
+    int a[5] = {4, 1, 2, 3};
+    for (i = 0; i < 5; i++) {
+        for (j = i + 1; j < 4; j++) { 
+            if (a[i] < a[j]) {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+    for (i = 0; i < 4; i++) { 
+        cout << a[i] << " ";
+    }
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------
+3) student details 
+#include<iostream>
+using namespace std;
+class st{
+    string name;
+    int rollno,mark1,mark2;
+    public:
+          st(string n,int rn,int m1,int m2){
+            name=n;
+            rollno=rn;
+            mark1=m1;
+            mark2=m2;
+          }
+        int cal(){
+            return mark1+mark2;
+        }
+        void display(){
+            cout<<"name of student:"<<name<<endl;
+            cout<<"roll no of student:"<<rollno<<endl;
+            cout<<"marks of 1st subject:"<<mark1<<endl;
+            cout<<"marks of 2nd subject:"<<mark2<<endl;
+            cout<<"total marks:"<<cal()<<endl;
+        }
+};
+int main() {
+    st s("alic",1,35,60);
+    st s2("john",2,89,90);
+    cout<<"details of student 1:"<<endl;
+    s.display();
+    cout<<endl;
+    cout<<"details of student 2:"<<endl;
+    s2.display();
+
+    return 0;
+}
+-------------------------------------------------------------------------------------------------------------
+4)bank emp
+
+#include<iostream>
+using namespace std;
+class emp{
+    string name;
+    int accno;
+    int balance;
+    public:
+          emp(string n, int an, int b){
+            name=n;
+            accno=an;
+            balance=b;
+          }
+        void display(){
+            cout<<"Name: "<<name<<endl;
+             cout<<"Account no: "<<accno<<endl;
+              cout<<"Balance: "<<balance<<endl;
+              if(balance<500){
+                cout<<"Invalid"<<endl;
+              }
+        }
+              void dep(float amount){
+                balance=balance+amount;
+                cout<<"Deposit of amount: "<<amount<<endl;
+                cout<<"Updated balance: "<<balance<<endl;
+              }
+              void with(float amount){
+                if(balance-amount<500){
+                    cout<<"Insufficient balance"<<endl;
+                }
+                else{
+                    balance=balance-amount;
+                    cout<<"Withdrawal of amount is: "<<amount<<endl;
+                    cout<<"Updated balance: "<<balance<<endl;
+                }
+              }
+        
+};
+int main() {
+
+    emp s("alic",123,1000);
+    
+    cout<<"Details of employee:"<<endl;
+    s.display();
+    cout<<endl;
+    
+    s.dep(100);
+    s.with(500);
+    
+    return 0;
+}
+---------------------------------------------------------------------------------------------------------------
+5) func overloading 
+#include<iostream>
+using namespace std;
+
+int add(int a,int b){
+    return a+b;
+}
+int add(double a,double b){
+    return a+b;
+}
+int main(){
+   cout<<"result of:"<<add(1,2)<<endl;
+   cout<<"result of:"<<add(1.5,2.5);
+   return 0;
+}
+-------------------------------------------------------------------------------------------------------------------
+6)unary operator 
+
+#include<iostream>
+using namespace std;
+
+class num{
+    int value;
+    public:
+        num(int val){
+            value=val;
+        }
+        num operator-(){
+            return num(-value);
+        }
+        void dis(){
+            cout<<"value:"<<value<<endl;
+        }
+};
+int main(){
+    num n(10);
+    num n1=-n;
+    
+    n.dis();
+    cout<<"unary -:";
+    n1.dis();
+   
+   return 0;
+}
+---------------------------------------------------------------------------------------------------------------------
+7)inheritance 
+
+#include<iostream>
+using namespace std;
+
+class ari{
+    public:
+        int add(int a,int b){
+            return a+b;
+        }
+        int sub(int a,int b){
+            return a-b;
+        }
+};
+class dis{
+    public:
+        void res(int r){
+            cout<<"result:"<<r<<endl;
+        }
+};
+
+ class cal:public ari,public dis{
+    public:
+        void opr(int a,int b){
+            int sum=add(a,b);
+            int subt=sub(a,b);
+            cout<<"perform the opr:"<<a<<" "<<b<<endl;
+            cout<<"sum ";
+            res(sum);
+            cout<<"difference ";
+            res(subt);
+        }
+ };
+int main(){
+    cal c;
+    c.opr(10,20);
+   
+   return 0;
+}
+----------------------------------------------------«---------------------------------------------------------
+8) alpha,beta,gamma
+
+#include<iostream>
+using namespace std;
+
+class base{
+    protected:
+        int alpha;
+    public:
+         base(int a): alpha(a){
+            cout<<"base alpha:"<<alpha<<endl;
+        }
+};
+class der:public base{
+    protected:
+        int beta;
+    public:
+         der(int a,int b):base(a),beta(b){
+            cout<<"derieved called with beta:"<<beta<<endl;
+        }
+};
+class d1:public der{
+    protected:
+        int gamma;
+        public:
+            d1(int a,int b,int c):der(a,b),gamma(c){
+                cout<<"derieved 1 class called with gamma: "<<gamma<<endl;
+            }
+            void dis(){
+                cout << "Values: alpha = " << alpha << ", beta = " << beta << ", gamma = " << gamma << endl;
+
+            }
+};
+int main(){
+   d1 ob(1,2,3);
+   ob.dis();
+   return 0;
+}
+-----------------------------------------------------------------------------------------------------
+9)
+
+#include <iostream>
+#include <fstream> // For file handling
+
+using namespace std;
+
+int main() {
+    // Create a file stream object for writing
+    ofstream outputFile("example.txt");
+
+    // Check if the file is successfully opened
+    if (!outputFile.is_open()) {
+        cout << "Failed to create the file!" << endl;
+        return 1; // Return an error code
+    }
+
+    // Write some text into the file
+    outputFile << "Hello, this is some text written into the file." << endl;
+
+    // Close the file
+    outputFile.close();
+
+    // Re-open the file for reading
+    ifstream inputFile("example.txt");
+
+    // Check if the file is successfully opened for reading
+    if (!inputFile.is_open()) {
+        cout << "Failed to open the file for reading!" << endl;
+        return 1; // Return an error code
+    }
+
+    // Read and display the text from the file
+    cout << "Contents of the file:" << endl;
+    string line;
+    while (getline(inputFile, line)) {
+        cout << line << endl;
+    }
+
+    // Close the file
+    inputFile.close();
+
+    return 0; // Return 0 to indicate success
+}
+------------------------------------------------------------------------------------------------
+
+
+11)
+
+
+#include <iostream>
+
+using namespace std;
+
+// Function to perform division and throw an exception if the divisor is zero
+double divide(int numerator, int denominator) {
+    if (denominator == 0) {
+        throw "Division by zero!";
+    }
+    return static_cast<double>(numerator) / denominator;
+}
+
+int main() {
+    int numerator, denominator;
+    cout << "Enter the numerator: ";
+    cin >> numerator;
+    cout << "Enter the denominator: ";
+    cin >> denominator;
+
+    try {
+        double result = divide(numerator, denominator);
+        cout << "Result of division: " << result << endl;
+    } catch (const char* error) {
+        cout << "Exception caught: " << error << endl;
+    }
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------------
+12)
+
+#include <iostream>
+#include <stdexcept> // For std::out_of_range exception
+
+using namespace std;
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int index;
+
+    cout << "Enter the index to access: ";
+    cin >> index;
+
+    try {
+        if (index < 0 || index >= sizeof(arr) / sizeof(arr[0])) {
+            throw out_of_range("Index out of bounds!");
+        }
+        cout << "Value at index " << index << ": " << arr[index] << endl;
+    } catch (const out_of_range& ex) {
+        cout << "Exception caught: " << ex.what() << endl;
+    }
+
+    return 0;
+}
