@@ -375,3 +375,65 @@ int main() {
 
     return 0;
 }
+--------------------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+
+class cl {
+private:
+    int al, bl;
+
+public:
+    // Default constructor
+    cl() {
+        al = 0;
+        bl = 0;
+    }
+
+    // Parameterized constructor
+    cl(int a, int b) {
+        al = a;
+        bl = b;
+    }
+
+    // Function to display the sum of al and bl
+    int disp() {
+        return al + bl;
+    }
+};
+
+int main() {
+    // Create objects of class cl
+    cl c;
+    cl s(1, 2);
+
+    // Display the sum of al and bl for objects c and s
+    cout << "Sum for c: " << c.disp() << endl;
+    cout << "Sum for s: " << s.disp() << endl;
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------------------
+#include <iostream>
+
+class Adder {
+private:
+    int num1;
+public:
+    Adder(int n) : num1(n) {}
+
+    friend int add(Adder obj1, int num2);
+};
+
+int add(Adder obj1, int num2) {
+    return obj1.num1 + num2;
+}
+
+int main() {
+    Adder obj(5);
+    int num = 10;
+    int sum = add(obj, num);
+    std::cout << "Sum: " << sum << std::endl;
+    return 0;
+}
+
